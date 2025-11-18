@@ -1,0 +1,320 @@
+html {
+
+    background-image:linear-gradient(#214854, #B4D6E1);
+
+    background-size: cover;
+
+    min-height: 100vh;
+
+}
+
+body {
+
+    text-align: center;
+
+    
+
+    font: 12px sans-serif;
+
+    font-size: 14px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-image: url(images/clouds_bottom.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+
+    min-height: fit-content;
+    min-width: fit-content;
+}
+
+h1 {
+
+    color: #4896AE;
+
+    background: url(images/login-background.png);
+
+    font-size:50px;
+
+    text-align: center;
+
+    background-size: contain;
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    width: 50%;
+
+    height: 20%;
+
+    padding-top: 8%;
+
+    margin: auto;
+
+    /*margin-top: 8%;*/
+
+}
+
+#logo-image{
+
+    width: 25%;
+
+    height: 35%;
+
+    margin: auto;
+    position: relative;
+
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    height: 20%;
+}
+
+
+
+#login-box {
+
+    background-color: white;
+
+    padding: 1%;
+
+    border-radius: 25px;
+
+    width: 23%;
+
+    height: 33%;
+
+    text-align: center;
+
+    margin: auto;
+    margin-top: 2%;
+
+    padding-top: 2.5%;
+
+    padding-bottom: 1%;
+}
+
+
+
+input[type="text"] {
+
+    background-color: #B4D6E1;
+
+    padding: 5%;
+
+    width: 80%;
+
+    height: 10%;
+
+    font-size: 16px;
+
+    position: relative;
+
+    display: block;
+
+    left: 10%;
+
+}
+
+
+
+input[type="password"] {
+
+    background-color: #B4D6E1;
+
+    padding: 5%;
+
+    width: 80%;
+
+    height: 10%;
+
+    font-size: 16px;
+
+    position: relative;
+
+    display: block;
+
+    left: 10%;
+
+}
+
+
+
+input[type="submit"] {
+
+    background-color:#214854;
+
+    color: white;
+
+    font-size: 16px;
+
+    height: 70%;
+
+    width: 30%;
+
+    border-radius: 15px;
+
+    margin-left: 2%;
+
+    margin-right: 2%;
+
+    text-align: center; 
+
+}
+
+
+
+label {
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    top: 5%;
+
+    position: relative;
+
+    display: block;
+
+    color: #214854;
+
+}
+
+
+
+button {
+
+    background-color:#214854;
+
+    color: white;
+
+    font-size: 16px;
+
+    height: 70%;
+
+    width: 30%;
+
+    border-radius: 15px;
+
+    margin-left: 2%;
+
+    margin-right: 2%;
+
+    text-align: center;
+}
+
+p {
+
+    color: #214854;
+
+    top: 5%;
+
+    margin-bottom: 5%;
+
+    position: relative;
+
+    display: block;
+
+}
+
+/* Stars container - positioned in top third */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh; /* Top third of viewport */
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 1; /* Behind content but above background */
+    overflow: hidden;
+}
+
+/* Individual star styling */
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+/* Different star sizes */
+.star.small {
+    width: 2px;
+    height: 2px;
+}
+
+.star.medium {
+    width: 3px;
+    height: 3px;
+}
+
+.star.large {
+    width: 4px;
+    height: 4px;
+}
+
+/* Blinking animation */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Different animation delays for variety */
+.star:nth-child(1) { animation-delay: 0s; }
+.star:nth-child(2) { animation-delay: 0.2s; }
+.star:nth-child(3) { animation-delay: 0.4s; }
+.star:nth-child(4) { animation-delay: 0.6s; }
+.star:nth-child(5) { animation-delay: 0.8s; }
+.star:nth-child(6) { animation-delay: 1s; }
+.star:nth-child(7) { animation-delay: 1.2s; }
+.star:nth-child(8) { animation-delay: 1.4s; }
+.star:nth-child(9) { animation-delay: 1.6s; }
+.star:nth-child(10) { animation-delay: 1.8s; }
+
+#legacy-link {
+    color: #214854;
+    font-size: 16px;
+    position: absolute;
+    left: 3%;
+    bottom: 5%;
+    opacity: 0.5;
+}
+
+#footer-text {
+    color: #214854;
+    font-size: 12px;
+    position: absolute;
+    right: 1%;
+    bottom: 2%;
+    opacity: 0.1;
+}
+
+.floating {
+    animation: float 15s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

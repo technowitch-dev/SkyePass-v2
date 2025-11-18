@@ -1,0 +1,66 @@
+<html>
+
+    <head>
+
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="icon" href="images/xxhdpi.png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+
+    <body>
+
+        <div class="stars-container">
+            <div class="star small" style="left: 10%; top: 5%;"></div>
+            <div class="star medium" style="left: 25%; top: 12%;"></div>
+            <div class="star large" style="left: 40%; top: 8%;"></div>
+            <div class="star small" style="left: 55%; top: 15%;"></div>
+            <div class="star medium" style="left: 70%; top: 10%;"></div>
+            <div class="star small" style="left: 85%; top: 20%;"></div>
+            <div class="star large" style="left: 15%; top: 25%;"></div>
+            <div class="star medium" style="left: 50%; top: 18%;"></div>
+            <div class="star small" style="left: 75%; top: 28%;"></div>
+            <div class="star medium" style="left: 30%; top: 22%;"></div>
+            <!-- Add more as needed -->
+        </div>
+
+        <title>SkyePass</title>
+
+        <img class="floating" id="logo-image" src="images/login-background.png" alt="SkyePass Logo">
+
+        <script>
+
+            function clearText(){
+
+                document.getElementById('website').value = '';
+
+                document.getElementById('codeword').value = '';
+
+            }
+
+        </script>
+
+        <div id="login-box">
+            <form action="process.php" method="POST">
+
+                <label for="website">Please enter website/app name here:</label><br>
+
+                <input type="text" id="website" name="website" autofocus><br>
+
+                <label for="codeword">Please enter your code word here:</label><br>
+
+                <input type="password" id="codeword" name="codeword"><br>
+
+                <div class="button-container">
+                    <input type="submit" value="Submit">
+                    <button type="button" onClick="clearText()">Clear</button>
+                </div>
+            </form>
+
+        </div>
+        <a id="legacy-link" href="https://technowitch.dev/legacy-pass">Legacy Version</a>
+        <span id="footer-text">As obvious as it may seem, this webapp was made from scratch without the use of AI.</span>
+    </body>
+</html>
