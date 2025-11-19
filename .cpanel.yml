@@ -2,6 +2,6 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/techdknm/public_html/
- - /bin/cp index.html $DEPLOYPATH
- - /bin/cp style.css $DEPLOYPATH
- - /bin/cp -R images $DEPLOYPATH
+ - cp index.html $DEPLOYPATH
+ - cp style.css $DEPLOYPATH
+ - cp -R images $DEPLOYPATH
