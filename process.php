@@ -52,11 +52,10 @@ $hash = hash_function($_POST['website'], $_POST['codeword']);
             <p id="label2">Generated Password:</p><br>
 
             <input type="text" id="new_pwd" autofocus value=<?=$hash?>><br>
-
-            <button type="button" id="reset" onclick='location="https://technowitch.dev/pass"'>Reset</button>
-
-            <button type="button" id="copy" onclick="copyText()">Copy</button>
-
+            <div class="button-container">
+                <button type="button" id="reset" onclick='location="https://technowitch.dev/pass"'>Reset</button>
+                <button type="button" id="copy" onclick="copyText()">Copy</button>
+            </div>
         </div>
 
     </body>

@@ -49,5 +49,5 @@ function hash_function($string1, $string2) {
 $string1 = "skye";
 $string2 = "walker";
 $hash = hash_function($string1, $string2);
-echo "Hash: " . $hash . "\n";
-echo "Length: " . strlen($hash) . "\n";
+//echo "Hash: " . $hash . "\n";
+//echo "Length: " . strlen($hash) . "\n";
