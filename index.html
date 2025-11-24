@@ -32,35 +32,135 @@
 
         <script>
 
-            function clearText(){
+            async function hashFunction(string1, string2) {
+                // Combine the two input strings
+                const combined = string1 + string2;
+                
+                // Define character sets
+                const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+                const numbers = '0123456789';
+                const special = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+                
+                // Create a combined character set
+                const allChars = uppercase + lowercase + numbers + special;
+                
+                // Create a hash of the combined string using Web Crypto API
+                const encoder = new TextEncoder();
+                const data = encoder.encode(combined);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                
+                // Build the 15-character hash
+                let result = '';
 
+                // Ensure at least one character from each required category
+                result += uppercase[parseInt(hash.substring(0, 2), 16) % uppercase.length];
+                result += lowercase[parseInt(hash.substring(2, 4), 16) % lowercase.length];
+                result += numbers[parseInt(hash.substring(4, 6), 16) % numbers.length];
+                result += special[parseInt(hash.substring(6, 8), 16) % special.length];
+                
+                // Fill remaining 11 characters from all character sets
+                for (let i = 4; i < 15; i++) {
+                    // Use hash bytes to determine character selection
+                    const hashByte = parseInt(hash.substring((i * 2) % hash.length, (i * 2) % hash.length + 2), 16);
+                    const charIndex = hashByte % allChars.length;
+                    result += allChars[charIndex];
+                }
+                
+                // Shuffle the result to randomize position of required characters
+                const resultArray = result.split('');
+                for (let i = 0; i < 15; i++) {
+                    const swapIndex = parseInt(hash.substring((i * 2) % 64, (i * 2) % 64 + 2), 16) % 15;
+                    const temp = resultArray[i];
+                    resultArray[i] = resultArray[swapIndex];
+                    resultArray[swapIndex] = temp;
+                }
+                
+                return resultArray.join('');
+            }
+
+            async function handleFormSubmit(event) {
+                event.preventDefault();
+                
+                const website = document.getElementById('website').value;
+                const codeword = document.getElementById('codeword').value;
+                
+                if (!website || !codeword) {
+                    return;
+                }
+                
+                const hash = await hashFunction(website, codeword);
+                document.getElementById('new_pwd').value = hash;
+                
+                // Switch to results view
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('results-section').style.display = 'block';
+                document.getElementById('new_pwd').focus();
+            }
+
+            function copyText() {
+                // Get the text field
+                var copyText = document.getElementById("new_pwd");
+
+                // Select the text field
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the text inside the text field
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            function resetForm() {
+                // Clear inputs
                 document.getElementById('website').value = '';
-
                 document.getElementById('codeword').value = '';
+                document.getElementById('new_pwd').value = '';
+                
+                // Switch back to form view
+                document.getElementById('results-section').style.display = 'none';
+                document.getElementById('form-section').style.display = 'block';
+                document.getElementById('website').focus();
+            }
 
+            function clearText(){
+                document.getElementById('website').value = '';
+                document.getElementById('codeword').value = '';
             }
 
         </script>
 
         <div id="login-box">
-            <form action="process.php" method="POST">
+            <div id="form-section">
+                <form id="password-form" onsubmit="handleFormSubmit(event)">
 
-                <label for="website">Please enter website/app name here:</label><br>
+                    <label for="website">Please enter website/app name here:</label><br>
 
-                <input type="text" id="website" name="website" autofocus><br>
+                    <input type="text" id="website" name="website" autofocus><br>
 
-                <label for="codeword">Please enter your code word here:</label><br>
+                    <label for="codeword">Please enter your code word here:</label><br>
 
-                <input type="password" id="codeword" name="codeword"><br>
+                    <input type="password" id="codeword" name="codeword"><br>
 
+                    <div class="button-container">
+                        <input type="submit" value="Submit">
+                        <button type="button" onClick="clearText()">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="results-section" style="display: none;">
+                <label for="new_pwd">Generated Password:</label><br>
+
+                <input type="text" id="new_pwd" autofocus><br>
                 <div class="button-container">
-                    <input type="submit" value="Submit">
-                    <button type="button" onClick="clearText()">Clear</button>
+                    <button type="button" id="reset" onclick="resetForm()">Reset</button>
+                    <button type="button" id="copy" onclick="copyText()">Copy</button>
                 </div>
-            </form>
+            </div>
 
         </div>
         <a id="legacy-link" href="https://technowitch.dev/legacy-pass">Legacy Version</a>
-        <span id="footer-text">As obvious as it may seem, this webapp was made from scratch without the use of AI.</span>
     </body>
 </html>
