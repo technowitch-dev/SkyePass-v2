@@ -1,4 +1,0 @@
-# Optional: use when deployed at domain.com/pass/
-# Ensures index.html is served and directory listing is off
-DirectoryIndex index.html
-Options -Indexes
