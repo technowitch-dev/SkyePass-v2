@@ -1,0 +1,15 @@
+# Enable rewrites
+RewriteEngine On
+
+# Route everything through index.php (good for frameworks / clean URLs)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# Disable directory listing
+Options -Indexes
+
+# Block sensitive files
+<FilesMatch "\.(env|ini|log|bak|sql|gitignore|htaccess|phpunit|yml)$">
+    Require all denied
+</FilesMatch>

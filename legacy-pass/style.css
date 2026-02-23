@@ -1,0 +1,146 @@
+html {
+    background-image:linear-gradient(#214854, #B4D6E1);
+    background-size: cover;
+    min-height: 100%;
+}
+body {
+    text-align: center;
+    background-repeat: no-repeat;
+    font: 12px sans-serif;
+    font-size: 14px;
+}
+h1 {
+    color: #4896AE;
+    background: url(../images/login-background.png);
+    font-size:50px;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 30%;
+    padding-top: 8%;
+    margin: auto;
+    /*margin-top: 8%;*/
+}
+
+img{
+    width: 25%;
+    height: 45%;
+    margin: auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#login-box {
+    background-color: white;
+    padding: 1%;
+    border-radius: 25px;
+    width: 22%;
+    height: 45%;
+    text-align: center;
+    margin: auto;
+    padding-top: 2.5%;
+    padding-bottom: 1%;
+}
+
+input[type="text"] {
+    background-color: #B4D6E1;
+    padding: 5%;
+    width: 80%;
+    height: 10%;
+    font-size: 16px;
+    position: relative;
+    display: block;
+    left: 10%;
+}
+
+input[type="password"] {
+    background-color: #B4D6E1;
+    padding: 5%;
+    width: 80%;
+    height: 10%;
+    font-size: 16px;
+    position: relative;
+    display: block;
+    left: 10%;
+}
+
+input[type="submit"] {
+    background-color:#214854;
+    color: white;
+    font-size: 16px;
+    height: 10%;
+    width: 30%;
+    border-radius: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center; 
+}
+
+label {
+    font-weight: bold;
+    font-size: 16px;
+    top: 5%;
+    position: relative;
+    display: block;
+    color: #214854;
+}
+
+button {
+    background-color:#214854;
+    color: white;
+    font-size: 16px;
+    height: 10%;
+    width: 30%;
+    border-radius: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;   
+}
+
+#label2 {
+    font-weight: bold;
+    font-size: 18px;
+    top: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    display: block;
+    color: #214854;
+}
+p {
+    color: #214854;
+    top: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    #login-box {
+        width: 92%;
+        max-width: 95%;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        left: 0;
+        box-sizing: border-box;
+    }
+    .button-container {
+        flex-direction: column;
+    }
+    input[type="submit"],
+    button {
+        width: 100%;
+        min-height: 44px;
+    }
+    img {
+        max-width: 60%;
+    }
+}
