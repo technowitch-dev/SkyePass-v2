@@ -175,14 +175,9 @@
         </div>
         <script>
             (function() {
-                var popup = document.getElementById('info-popup');
                 var toggle = document.getElementById('info-toggle');
                 var content = document.getElementById('info-content');
                 var closeBtn = document.getElementById('info-close');
-                var key = 'skypass-info-dismissed';
-                if (localStorage.getItem(key)) {
-                    popup.classList.add('dismissed');
-                }
                 function openInfo() {
                     content.classList.add('open');
                     toggle.setAttribute('aria-expanded', 'true');
@@ -191,16 +186,11 @@
                     content.classList.remove('open');
                     toggle.setAttribute('aria-expanded', 'false');
                 }
-                function dismiss() {
-                    closeInfo();
-                    popup.classList.add('dismissed');
-                    localStorage.setItem(key, '1');
-                }
                 toggle.addEventListener('click', function() {
                     if (content.classList.contains('open')) closeInfo();
                     else openInfo();
                 });
-                closeBtn.addEventListener('click', dismiss);
+                closeBtn.addEventListener('click', closeInfo);
             })();
         </script>
     </body>
